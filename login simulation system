@@ -1,0 +1,29 @@
+class LoginSystem:
+    def __init__(self):
+        self.username = "admin"
+        self.password = "password123"
+        self.attempts = 0
+        self.max_attempts = 3
+
+    def login(self):
+        while self.attempts < self.max_attempts:
+            input_username = input("Enter your username: ")
+            input_password = input("Enter your password: ")
+
+            if input_username == self.username and input_password == self.password:
+                print("Login successful!")
+                return
+            else:
+                self.attempts += 1
+                remaining_attempts = self.max_attempts - self.attempts
+                print(f"Invalid username or password. You have {remaining_attempts} attempts left.")
+
+        print("Account locked. Maximum attempts exceeded.")
+
+def main():
+    login_system = LoginSystem()
+    login_system.login()
+
+if __name__ == "__main__":
+    main()
+
